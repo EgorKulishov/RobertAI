@@ -7,7 +7,7 @@ import time
 API_TOKEN = '7731308012:AAFEq5-45wKYDjSc5rpogVSsR5tkfpMjob0'
 
 # Настройки для API Gemini
-my_api = ['AIzaSyArqiOJ_Sa6ufkJDavMKS6Wyz1W_SeAd64']  # Замените на ваш API ключ
+my_api = ['YOUR_API_KEY']  # Замените на ваш API ключ
 
 # Инициализация бота
 bot = telebot.TeleBot(API_TOKEN)

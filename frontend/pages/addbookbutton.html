@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить книгу</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #3c0070;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #fff;
+        }
+        .review-area {
+            width: 500px;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #000000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .review-area h2 {
+            text-align: center;
+        }
+        .review-area form {
+            display: flex;
+            flex-direction: column;
+        }
+        .review-area label {
+            margin-top: 10px;
+        }
+        .review-area input[type="text"],
+        .review-area input[type="file"] {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .review-area input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #3c0070;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .duration-selection {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .duration-button {
+            padding: 10px;
+            background-color: #ccc;
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 80px;
+            height: 60px;
+            text-align: center;
+        }
+        .duration-button.selected {
+            background-color: #132438;
+            color: #ffffff;
+        }
+        .back-button {
+            position: absolute;
+            top: 75px;
+            left: 10px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            color: #000;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button"><a href="my_library.html">←</a></button>
+
+    <div class="review-area">
+        <h2>Добавить книгу</h2>
+        <form id="bookForm" onsubmit="return handleSubmit(event)">
+            <div class="duration-selection">
+                <button type="button" class="duration-button" onclick="selectDuration('1 день')">1 день</button>
+                <button type="button" class="duration-button" onclick="selectDuration('3 дня')">3 дня</button>
+                <button type="button" class="duration-button" onclick="selectDuration('5 дней')">5 дней</button>
+                <button type="button" class="duration-button" onclick="selectDuration('1 неделя')">1 неделя</button>
+                <button type="button" class="duration-button" onclick="selectDuration('2 недели')">2 недели</button>
+                <button type="button" class="duration-button" onclick="selectDuration('1 месяц')">1 месяц</button>
+            </div>
+            <label for="username">Название книги:</label>
+            <input type="text" id="username" name="username" required>
+            <input type="file" id="fileInput" accept=".txt" />
+            <button type="button" class="upload-button" id="uploadButton">Загрузить текст</button>
+            <input type="submit" value="Добавить книгу">
+        </form>
+        <div id="result" class="result hidden"></div>
+    </div>
+
+    <script>
+        let selectedDuration = '';
+
+        function selectDuration(duration) {
+            const buttons = document.querySelectorAll('.duration-button');
+            buttons.forEach(button => {
+                button.classList.remove('selected');
+            });
+
+            selectedDuration = duration;
+            const selectedButton = Array.from(buttons).find(button => button.innerText === duration);
+            if (selectedButton) {
+                selectedButton.classList.add('selected');
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Останавливаем отправку формы
+            const fileInput = document.getElementById('fileInput');
+            
+            // Проверяем, есть ли загруженный файл
+            if (fileInput.files.length === 0) {
+                alert("Пожалуйста, загрузите файл.");
+                return false; // Форма еще не отправилась
+            }
+
+            // Здесь можно добавить код для обработки данных
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerText = "Текст, полученный от нейронной сети: Файл загружен.";
+            resultDiv.classList.remove('hidden');
+
+            return true; // Отправляем форму
+        }
+    </script>
+</body>
+</html>

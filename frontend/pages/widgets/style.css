@@ -1,0 +1,84 @@
+nav {
+    position: fixed;
+    height: 550px;
+    left: 0px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    background-color: #fefefe;
+    padding: 20px 10px;
+    border-radius: 30px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: column;
+    height: 100%;
+}
+
+nav ul li {
+    width: 100%;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #4d0f8a;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.2s all ease;
+    border: 2px solid transparent; /* Для активного состояния */
+    border-radius: 50px; 
+}
+
+nav ul li a.active {
+    border: 2px solid black; /* Черный контур для активной кнопки */
+}
+
+nav ul li a svg {
+    width: 25px;
+    height: 25px;
+}
+
+nav ul li a svg path {
+    transition: 0.2s all ease;
+}
+
+nav ul li a span {
+    position: absolute;
+    background-color: #fefefe;
+    padding: 2px 5px;
+    margin-left: 5px;
+    font-weight: 50;
+    font-size: 15px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.2s all ease;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: #000000;
+}
+
+nav ul li a.active span,
+nav ul li a:hover span {
+    opacity: 1;
+    visibility: visible;
+    margin-left: 5px;
+}
+
+nav.active ul li a span {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    margin-left: 0;
+}
+
+nav.active ul li a:hover span {
+    margin-left: 0;
+}

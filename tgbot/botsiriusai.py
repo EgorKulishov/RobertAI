@@ -4,7 +4,7 @@ import asyncio
 from telebot import types
 import time
 # Ваш Telegram Bot API ключ
-API_TOKEN = '7731308012:AAFEq5-45wKYDjSc5rpogVSsR5tkfpMjob0'
+API_TOKEN = 'YOUR_API_KEY'
 
 # Настройки для API Gemini
 my_api = ['YOUR_API_KEY']  # Замените на ваш API ключ
